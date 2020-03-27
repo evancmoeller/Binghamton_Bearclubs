@@ -292,7 +292,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
-  pg (~> 0.21)
+  pg
   rails (= 4.2.10)
   rails_12factor
   rspec-rails
