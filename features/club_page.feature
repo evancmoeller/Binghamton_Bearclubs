@@ -10,10 +10,10 @@ Scenario: display club information
   
 Scenario: interact with club (open)
   When I go to the club page "test"
-  And I click "Join Club"
+  And I press "Join Club"
   Then I should see "Join"
   And I should see "Follow"
-  When I click "Join"
+  When I press "Join"
   Then I should see "Joined"
 
   

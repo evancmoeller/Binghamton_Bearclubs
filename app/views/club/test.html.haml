@@ -16,3 +16,24 @@
     %title Club Name
     
   %body
+    %button.btn.btn-primary.btn-lg.btn-block.rounded-pill{:type => "submit"} Join Club!
+    .center.column
+      %h2 Club Description
+    .right.column
+      %h2 Club Admin Names
+    .left.column
+      %h2 Upcoming Event
+      
+  .nav-collapse.collapse
+  %ul.nav
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "data-target" => "#"} 
+        Join Club!
+        %b.caret
+      %ul.dropdown-menu{"role" => "menu"}
+        %li
+          %a{:href => "#link1"} 
+            Join
+          %a{:href => "#link2"} 
+            Follow
+    
