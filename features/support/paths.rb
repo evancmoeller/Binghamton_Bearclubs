@@ -15,6 +15,9 @@ module NavigationHelpers
 
     when (/^the Binghamton Bearclub's "Welcome Page"$/)
       welcome_index_path
+      
+    when (/^the club page "test"$/)
+      club_test_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
