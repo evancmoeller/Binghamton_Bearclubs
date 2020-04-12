@@ -49,7 +49,7 @@ group :test do
   gem 'guard-rspec'
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 1.4.1'
   gem 'capybara'
   gem 'factory_girl_rails'
 end

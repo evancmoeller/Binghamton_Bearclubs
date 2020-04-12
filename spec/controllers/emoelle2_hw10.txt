@@ -1,0 +1,43 @@
+Evan Moeller
+CS 471 Homework 10
+
+1. Page 440 CYU 19: What is an r-value reference? Why might it be useful?
+An r-value reference is similar to a l-value reference, in the fact that they are both references; however, unlike l-value
+references, the value used to initialize an r-value reference must be an r-value.  R-value references provide two useful properties:
+the first being that the value stored in the reference is mutable, while the second is the reference has the same lifespan as a constant
+l-value reference.
+Reference: https://www.learncpp.com/cpp-tutorial/15-2-rvalue-references/
+
+2. Page 461 CYU 36: What is the difference between a coroutine and a thread?
+Coroutines and threads accomplish a similar task through different methods.  With coroutines the language, or the programmer
+if the behavior is undefined, must tell the machine when to preform a context switch on the processor.  With threads this
+process is handled by the operating system.
+Reference: https://stackoverflow.com/questions/1934715/difference-between-a-coroutine-and-a-thread
+
+3.
+	a. 25 (a=5)
+	b. 25 (a=5)
+	c. The return values will be different if the value of a is an expression that produces a side-effect, such as calling "a--" rather than "a" for the function parameters, since the textual struggles with multiple unsequenced modifications.
+	replacement of the macro will not evaluate the expression before replacement.
+	References: -https://stackoverflow.com/questions/9104568/macro-vs-function-in-c
+			    -gcc warning outputs
+4.
+	a. 1 2 1 0
+	   1 2 1 0
+	   If the parameter-passing mechanism is by value none of the changes to any of the array values would be persistent outside the
+	   scope of the function, since each function call is effectively working with its own copy of the value.
+	b. 1 2 1 0
+	   1 2 1 0
+	   If the parameter-passing mechanism is by reference all of the changes made in the mys function are persistent after exiting from
+	   the function stack yet due to the original value of i and a[1] both being 1, both of the calls to mys end up returning the same
+	   values for x and y that were originally passed in.
+	c. 1 2 1 0
+	   1 2 1 0
+	   If the parameter-passing mechanism is by value-result the function calls would be processed in the same way as pass by value, so they receive a copy (copy-in), but unlike traditional pass by value the return value after the function is copied back into the callee's value (copy-out) allowing the new value to persist after the function.  However as in pass by reference due to the parameters chosen for the mys function calls the new values will be equal to the passed in value.
+	d. 1 2 1 0
+	   1 2 1 0
+	   If the parameter-passing mechanism is by macro-expansion the above values would also be computed, since none of the expansions are complex expressions, or contain side-effects, the macro-expansion mechanism would return the same results as pass by value.
+	e. 1 2 1 0
+	   1 2 1 0
+	   If the parameter-passing mechanism is by name the above results would also be computed due to the same reasons as the other cases.
+	Reference: https://www.geeksforgeeks.org/parameter-passing-techniques-in-c-cpp/

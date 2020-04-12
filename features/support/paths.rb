@@ -16,8 +16,11 @@ module NavigationHelpers
     when (/^the Binghamton Bearclub's "Welcome Page"$/)
       welcome_index_path
       
-    when (/^the club page "test"$/)
-      club_test_path
+    when (/^the clubs page$/)
+      clubs_path
+      
+    when (/^the show page for "(.*)"$/)
+      clubs_path(Club.find_by_name($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

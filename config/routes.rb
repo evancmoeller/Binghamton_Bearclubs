@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :clubs 
+  
   get "welcome/index"
-  get "club/test"
   root "welcome#index"
   
  
