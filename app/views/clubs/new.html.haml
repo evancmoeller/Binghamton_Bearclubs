@@ -1,0 +1,14 @@
+%h1 Create New Club
+
+= form_tag clubs_path do
+
+    = label :club, :name, 'Club Name'
+    = text_field :club, 'name'
+    
+    = label :club, :description, 'Description'
+    = text_field :description, 'description'
+    
+    = label :club, :admins, 'Admins'
+    = text_field :admins, 'admins'
+    
+    = submit_tag 'Save Changes'
