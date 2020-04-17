@@ -3,12 +3,9 @@
 = form_tag clubs_path do
 
     = label :club, :name, 'Club Name'
-    = text_field :club, 'name'
+    = text_field :club, 'name', :id => 'name'
     
     = label :club, :description, 'Description'
-    = text_field :description, 'description'
-    
-    = label :club, :admins, 'Admins'
-    = text_field :admins, 'admins'
+    = text_field :description, 'description', :id => 'description'
     
     = submit_tag 'Save Changes'

@@ -20,6 +20,54 @@ describe ClubsController, type: :controller do
       end
   end
   
+  describe '#show' do
+    let(:id1) {"1"}
+    let(:club) {instance_double('Club', name: "temp")}
+    it 'retrieves the club' do
+      expect(Club).to receive(:find).with(id1).and_return(club)
+      get :show, :id => id1
+    end
+  end
+  
+  describe '#edit' do
+      let(:id1) {"1"}
+      let(:club) {instance_double('Club', name: "temp")}
+      it 'retrieves the club' do
+         expect(Club).to receive(:find).with(id1).and_return(club)
+         get :edit, :id => id1
+      end
+  end
+  
+  describe '#update' do
+    let(:id1) {"1"}
+    let(:params) {{:name => "test"}}
+    let(:club) {instance_double('Club', name: "temp")}
+    let(:updated) {instance_double('Club', name: "test")}
+    it 'retrieves the club' do
+      expect(Club).to receive(:find).with(id1).and_return(club)
+      allow(club).to receive(:update_attributes!).with(params)
+      put :update, :id => id1, club: params
+    end
+    it 'updates the club attributes' do
+      allow(Club).to receive(:find).with(id1).and_return(club)
+      expect(club).to receive(:update_attributes!).with(params)
+      put :update, :id => id1, club: params
+      #expect(assigns(:club)).to eq(updated)
+    end
+    it 'sends a flash message' do
+         allow(Club).to receive(:find).with(id1).and_return(club)
+         allow(club).to receive(:update_attributes!).with(params)
+         put :update, :id => id1, club: params
+         expect(flash[:notice]).to match(/^\'[^']*\' was updated.$/)
+    end
+    it 'redirect_to clubs index' do
+         allow(Club).to receive(:find).with(id1).and_return(club)
+         allow(club).to receive(:update_attributes!).with(params)
+         put :update, :id => id1, club: params
+         expect(response).to redirect_to clubs_path
+    end
+  end
+  
   describe '#destroy' do
       let(:id1) {"1"}
       let(:club) {instance_double('Club', name: "temp")}
@@ -46,4 +94,5 @@ describe ClubsController, type: :controller do
          expect(response).to redirect_to clubs_path
       end
   end
+  
 end

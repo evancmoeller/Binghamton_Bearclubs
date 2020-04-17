@@ -19,8 +19,14 @@ module NavigationHelpers
     when (/^the clubs page$/)
       clubs_path
       
+    when (/the Create New Club page$/)
+      new_club_path
+      
     when (/^the show page for "(.*)"$/)
-      clubs_path(Club.find_by_name($1))
+      club_path(Club.find_by_name($1))
+      
+    when (/^the edit page for "(.*)"$/)
+      edit_club_path(Club.find_by_name($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
