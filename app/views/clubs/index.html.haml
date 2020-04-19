@@ -1,0 +1,12 @@
+%h2 All Clubs
+
+%table#clubs.table.table-striped.col-md-12
+  %thead
+    %th Club Name
+    
+  %tbody
+    - @clubs.each do |club|
+      %tr
+        %td= link_to "#{club.name}", club_path(club)
+        
+= link_to "Create a Club", new_club_path

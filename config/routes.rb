@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/cleanup/', :to => 'sessions#cleanup', :as => :cleanup
   
   resources :users
+  resources :clubs 
   
   get 'dashboard/index'
   get 'welcome/signup'

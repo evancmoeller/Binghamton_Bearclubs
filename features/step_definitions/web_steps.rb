@@ -252,3 +252,11 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Given /the following clubs exist/ do |clubs_table|
+  clubs_table.hashes.each do |club|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    Club.create!(club)
+  end
+end
