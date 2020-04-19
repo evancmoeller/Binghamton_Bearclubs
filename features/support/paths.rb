@@ -14,8 +14,14 @@ module NavigationHelpers
     case page_name
 
     when (/^the Binghamton Bearclub's "Welcome Page"$/)
-      welcome_index_path
-
+      welcome_login_path
+      
+    when (/^the Binghamton Bearclub's "Sign Up Page"$/)
+      welcome_signup_path
+  
+    when (/^the Binghamton Bearclub's "Dashboard Page"$/) 
+      dashboard_index_path
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

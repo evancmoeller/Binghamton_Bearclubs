@@ -58,3 +58,23 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+# Failed attempt at cucumber testing 3rd party authenticated sign up and log in 
+=begin
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 
+    :provider => 'github',
+    :uid => '12345',
+    :user_id => 12345,
+    :info => {
+      :name => 'Baxter Bearcat',
+      :email => 'bbaxter@binghamton.edu'
+    }
+  }
+  OmniAuth.config.add_mock(:github, omniauth_hash)
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
+=end

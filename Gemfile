@@ -15,7 +15,12 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # HAML
+gem 'haml'
 gem "haml-rails"
+
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,6 +42,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
   gem 'byebug'
   gem 'simplecov', require: false
   
@@ -45,7 +51,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  #gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
