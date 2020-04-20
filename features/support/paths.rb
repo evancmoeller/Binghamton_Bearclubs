@@ -12,34 +12,27 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-
-    when (/^the Binghamton Bearclub's "Welcome Page"$/)
-      welcome_login_path
-      
-    when (/^the Binghamton Bearclub's "Sign Up Page"$/)
-      welcome_signup_path
-  
-    when (/^the Binghamton Bearclub's "Dashboard Page"$/) 
-      dashboard_index_path
-      
-    when (/^the clubs page$/)
-      clubs_path
-      
-    when (/the Create New Club page$/)
-      new_club_path
-      
-    when (/^the show page for "(.*)"$/)
-      club_path(Club.find_by_name($1))
-      
-    when (/^the edit page for "(.*)"$/)
-      edit_club_path(Club.find_by_name($1))
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+      when (/^the "Welcome Page"$/)
+        welcome_login_path
+        
+      when (/^the "Sign Up Page"$/)
+        welcome_signup_path
+    
+      when (/^the "Dashboard Page"$/) 
+        dashboard_index_path
+        
+      when (/^the "Clubs Page"$/)
+        clubs_path
+        
+      when (/the "Create New Club Page"$/)
+        new_club_path
+        
+      when (/^the "Show Page" for "(.*)"$/)
+        club_path(Club.find_by_name($1))
+        
+      when (/^the "Edit Page" for "(.*)"$/)
+        edit_club_path(Club.find_by_name($1))
+        
     else
       begin
         page_name =~ /^the (.*) page$/

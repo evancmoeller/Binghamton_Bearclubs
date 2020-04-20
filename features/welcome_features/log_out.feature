@@ -7,12 +7,12 @@ Background: user have been added to database and logged in on the dashboard page
   | Baxter Bearcat | bbearcat1@binghamton.edu |
   
   Then 1 seed users should exist
-  Given I am on the Binghamton Bearclub's "Welcome Page"
+  Given I am on the "Welcome Page"
   # When I press "github"
-  # Then I am on the Binghamton Bearclub's "Dashboard Page"
+  # Then I am on the "Dashboard Page"
   # And I should see "Welcome back Baxter Bearcat!"
 
 Scenario: log out
   # When I press "Log out"
-  # Then I am on the Binghamton Bearclub's "Welcome Page"
+  # Then I am on the "Welcome Page"
   # And I should see "You were successfully logged out."

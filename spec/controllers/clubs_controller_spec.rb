@@ -94,5 +94,4 @@ describe ClubsController, type: :controller do
          expect(response).to redirect_to clubs_path
       end
   end
-  
 end

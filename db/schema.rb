@@ -12,15 +12,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20200413232444) do
-  create_table "clubs", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-end
 
-ActiveRecord::Schema.define(version: 20200403183720) do
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -31,10 +23,18 @@ ActiveRecord::Schema.define(version: 20200403183720) do
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
 
+  create_table "clubs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end

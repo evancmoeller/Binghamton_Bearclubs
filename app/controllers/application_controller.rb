@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def can_proceed
-    redirect_to welcome_login_path and return unless current_user
+    # redirect_to welcome_login_path and return unless current_user # development only
   end
 
   def current_user

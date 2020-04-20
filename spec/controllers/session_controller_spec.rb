@@ -32,39 +32,24 @@ RSpec.describe SessionsController, type: :controller do
             end
             
             context "user registers with given provider" do
+              let(:user) { instance_double('User', name: 'Baxter Bearcat', email: 'bbearcat1@binghamton.edu') }
+              let(:auth) { instance_double('Authorization', provider: 'GitHub', uid: '12345678') }
+              let(:auth_with_id) { instance_double('Authorization', provider: 'GitHub', uid: '12345678', user_id: 1) }
+              
               it "checks user registers with given provider" do
                 allow(controller).to receive(:session?).and_return(false)
                 allow(Authorization).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]).and_return(false)
                 allow(User).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]['info']).and_return(false)
-                expect(User).to receive(:create_with_omniauth).with(OmniAuth.config.mock_auth[:github]['info']).and_return(false)
+                expect(User).to receive(:create_with_omniauth).with(OmniAuth.config.mock_auth[:github]['info']).and_return(user)
                 post :create, provider: :github
               end
-            end
-          end
-        end
-      end
-      
-      describe "authorization exists and user exists" do
-        context "authorization exists" do
-          it "checks authorization exists" do 
-            allow(controller).to receive(:session?).and_return(false)
-            expect(Authorization).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]).and_return(true) 
-            post :create, provider: :github
-          end
-          
-          context "user exists" do
-            it "checks user exists" do 
-              allow(controller).to receive(:session?).and_return(false)
-              allow(Authorization).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]).and_return(true)
-              #expect(User).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]['info']).and_return(true)
-              post :create, provider: :github
-            end
-            
-            context "user logs in with given provider" do
-              it "checks user logs in with given provider" do
-                allow(controller).to receive(:session?).and_return(true)
-                #allow(Authorization).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]).and_return(true)
-                #allow(User).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]['info']).and_return(true)
+              
+              it "create authorization for user" do
+                allow(controller).to receive(:session?).and_return(false)
+                allow(Authorization).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]).and_return(false)
+                allow(User).to receive(:exists?).with(OmniAuth.config.mock_auth[:github]['info']).and_return(false)
+                allow(User).to receive(:create_with_omniauth).with(OmniAuth.config.mock_auth[:github]['info']).and_return(user)
+                expect(Authorization).to receive(:create_with_omniauth).with(OmniAuth.config.mock_auth[:github]).and_return(auth)
                 post :create, provider: :github
               end
             end

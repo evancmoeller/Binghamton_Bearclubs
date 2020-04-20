@@ -1,9 +1,9 @@
 Feature: sign up
   
 Background: navigate to "Sign Up Page"
-  When I go to the Binghamton Bearclub's "Welcome Page"
+  When I go to the "Welcome Page"
   And I press "sign_up"
-  Then I am on the Binghamton Bearclub's "Sign Up Page"
+  Then I am on the "Sign Up Page"
 
 Scenario: sign up (successful)
   When I fill in "first_name" with "Kevin"

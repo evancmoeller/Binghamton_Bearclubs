@@ -5,6 +5,26 @@
 # files.
 
 require 'cucumber/rails'
+require 'omniauth'
+
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://example.com'
+
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    :provider => 'github',
+    :uid => '12345678',
+    :info => {:name => 'Baxter Bearcat', :email => 'bbaxter@binghamton.edu' } 
+  })
+    
+  Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]  
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+  OmniAuth.config.mock_auth[:github] = nil
+end
+
 
 # frozen_string_literal: true
 
@@ -57,24 +77,3 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
-
-# Failed attempt at cucumber testing 3rd party authenticated sign up and log in 
-=begin
-Before('@omniauth_test') do
-  OmniAuth.config.test_mode = true
-  omniauth_hash = { 
-    :provider => 'github',
-    :uid => '12345',
-    :user_id => 12345,
-    :info => {
-      :name => 'Baxter Bearcat',
-      :email => 'bbaxter@binghamton.edu'
-    }
-  }
-  OmniAuth.config.add_mock(:github, omniauth_hash)
-end
-
-After('@omniauth_test') do
-  OmniAuth.config.test_mode = false
-end
-=end

@@ -27,8 +27,11 @@ class SessionsController < ApplicationController
             message = "You can now log in using #{auth_hash["provider"].capitalize}."
           else
             user = User.create_with_omniauth(auth_hash['info'])
-            auth = user.authorizations.create_with_omniauth(auth_hash)
-            message = "Welcome #{user.name}! You've signed up using #{auth.provider.capitalize}."
+            #auth = user.authorizations.create_with_omniauth(auth_hash)
+            auth = Authorization.create_with_omniauth(auth_hash)
+            #puts user.attributes["id"]
+            auth.update_attributes(user_id: user.attributes["id"])
+            message = "Welcome #{auth.user.name}! You've signed up using #{auth.provider.capitalize}."
           end
         end
       end
@@ -61,7 +64,7 @@ class SessionsController < ApplicationController
   
   def cleanup
     reset_session
-    flash[:warning] = "Session Reset (for testing ONLY) " 
+    flash[:warning] = "Session Reset" 
     redirect_to welcome_login_path
   end
   
