@@ -21,7 +21,8 @@ Background: clear session, user and authorization exist
   | name | description         |
   | test | Lorem Ipsum ....... |
   
-  Then I should see "test"
+  Then 1 seed clubs should exist
+  And I should see "test"
 
 @omniauth_test
 Scenario: View clubs information

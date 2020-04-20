@@ -20,8 +20,16 @@ Given (/the following authorizations exist/) do |authorizations_table|
   end
 end
 
+Then(/(.*) seed clubs should exist/) do | n_seeds |
+  Club.count.should be n_seeds.to_i
+end
+
 Then(/(.*) seed users should exist/) do | n_seeds |
   User.count.should be n_seeds.to_i
+end
+
+Then(/(.*) seed authorizations should exist/) do | n_seeds |
+  Authorization.count.should be n_seeds.to_i
 end
 
 Given(/^I visit (.+)$/) do |page_name|
