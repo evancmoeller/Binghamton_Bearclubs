@@ -17,11 +17,18 @@ Background: clear session, user and authorization exist
   When I follow "Search Page"
   Then I am on the "Clubs Page"
   
-  Given the following clubs exist:
-  | name | description         |
-  | test | Lorem Ipsum ....... |
+  When I follow "Create a Club"
+  Then I should be on the "Create New Club Page"
+  When I fill in "name" with "test"
+  And I fill in "description" with "Lorem Ipsum ......."
+  And I press "Save Changes"
+  Then I should be on the "Clubs Page"
   
-  Then 1 seed clubs should exist
+#  Given the following clubs exist:
+#  | name | description         |
+#  | test | Lorem Ipsum ....... |
+  
+#  Then 1 seed clubs should exist
   And I should see "test"
 
 @omniauth_test

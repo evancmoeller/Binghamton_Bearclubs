@@ -4,7 +4,6 @@
 
 %p#description=@club.description
 
-
 = link_to "Edit Club", edit_club_path(@club)
 = button_to "Delete Club", club_path(@club),  :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-primary'
 = link_to "Back to All Clubs", clubs_path

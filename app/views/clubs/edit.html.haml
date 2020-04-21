@@ -1,6 +1,6 @@
 %h2 Edit Club
 
-= form_tag clubs_path(@club), :method => :put do
+= form_tag club_path(@club), :method => :put do
 
   = label :club, :name, 'Club Name'
   = text_field :club, 'name', :id => 'name'

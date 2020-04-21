@@ -1,4 +1,3 @@
-
 Feature: 3rd party authenticated log in
 
 Background: clear session, user and authorization exist
