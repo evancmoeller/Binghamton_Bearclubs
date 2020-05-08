@@ -1,0 +1,31 @@
+%h2.text-center Account Profile
+
+.bg-light.p-3.m-3.rounded-lg
+  %ul.list-group.list-group-flush
+    %li.list-group-item
+      %b Name:
+      =@user.name
+    %li.list-group-item
+      %b Email:   
+      =@user.email
+    %li.list-group-item
+      %b B-Number:      
+      =@user.b_number
+    %li.list-group-item
+      %b Account Type:           
+      =@user.acct_type
+    %li.list-group-item
+      %b Major:           
+      =@user.major
+    %li.list-group-item
+      %b Graduation Year:           
+      =@user.grad_year
+      
+.row.mt-5
+  .col-lg-12
+    = button_to "Edit", edit_user_path(@user), :method => :get, :class => 'btn btn-primary btn-block btn-lg rounded-pill', :id => 'edit_user'
+    
+.row.mt-3
+  .col-lg-12
+    .text-center
+      = link_to "Back", dashboard_index_path

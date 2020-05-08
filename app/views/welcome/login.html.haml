@@ -1,30 +1,16 @@
 .row
   .col-lg-8
     %h2 Welcome Bearcats!
-    = image_tag 'binghamton-campus.jpg', alt: 'Binghamton Campus', class: 'w-100 rounded-lg my-3'
+    = image_tag 'binghamton_campus.jpg', alt: 'Binghamton Campus', class: 'w-100 rounded-lg my-3'
     %h4 Interact with Student Clubs on Campus
     %p.text-secondary.lead Your hub for all Binghamton University clubs. Search for new clubs to join and follow the clubs you already love.
-    %div
-      = link_to 'Session Reset', cleanup_path
-
-  .col-lg-4.jumbotron
+  .col-lg-4.bg-light.p-5.rounded-lg
     %h3 Log in or Sign up for a New Account
-    
-    .form-group
-    = button_to 'with GitHub', '/auth/github/', :method => :get, :class => 'btn btn-primary btn-lg btn-block rounded-pill', :id => 'github'
+    .form-group.mt-5
+      = button_to 'with GitHub', '/auth/github/', :method => :get, :class => 'btn btn-primary btn-lg btn-block rounded-pill', :id => 'github'
     %p.form-text.text-center.text-muted or
     .form-group
-    = button_to 'with Facebook', '/auth/facebook/', :method => :get, :class => 'btn btn-primary btn-lg btn-block rounded-pill', :id => 'facebook'
-   
-    = form_tag welcome_login_path do
-      .form-group.my-3.border-top.border-secondary
-        = label :welcome, 'Username'
-        = text_field :welcome, 'username', :class => 'form-control', :id => 'username'
-      .form-group
-        = label :welcome, 'Password '
-        = text_field :welcome, 'password', :class => 'form-control', :id => 'password'
-        = link_to 'Forgot password?', welcome_login_path
-      .form-group
-        = submit_tag 'Log in', :class => 'btn btn-secondary btn-lg btn-block rounded-pill bing-green-bg', :id => 'log_in'
-    %p.form-text.text-center.text-muted or
-    = button_to 'Sign up', welcome_signup_path, :method => :get, :class => 'btn btn-secondary btn-lg btn-block rounded-pill', :id => 'sign_up'
+      = button_to 'with Facebook', '/auth/facebook/', :method => :get, :class => 'btn btn-primary btn-lg btn-block rounded-pill', :id => 'facebook'
+.row
+  .col-lg-12.mb-5
+    = link_to 'Session Reset', cleanup_path

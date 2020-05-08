@@ -26,7 +26,13 @@ class ApplicationController < ActionController::Base
   
   helper_method :hide
   def hide 
-    "invisible" if @action == 'login' || @action == 'signup'
+    "invisible" if @header == 'hide'
+  end
+  
+  helper_method :admin_only
+  def admin_only 
+    user = current_user
+    "admin_only" if user.acct_type != 'Admin'
   end
   
 end

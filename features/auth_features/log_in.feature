@@ -1,6 +1,6 @@
-Feature: 3rd party authenticated log in
+Feature: log in
 
-Background: clear session, user and authorization exist
+Background:
   Given I am on the "Welcome Page"
   And I follow "Session Reset"
   
@@ -16,7 +16,7 @@ Background: clear session, user and authorization exist
   And 1 seed users should exist
   
 @omniauth_test
-Scenario: login for app
+Scenario: log in
   When I Sign Up or Log In with "GitHub"
-  Then I should see "Welcome back Baxter Bearcat!"
-  And I should see "Log out"
+  Then I should be on the "Dashboard Page"
+  And I should see "Welcome back Baxter Bearcat!"

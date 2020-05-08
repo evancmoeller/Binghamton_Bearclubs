@@ -12,6 +12,9 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+
+require 'factory_girl_rails'
+
 require 'omniauth'
 OmniAuth.config.test_mode = true
 omniauth_hash = { 
@@ -107,4 +110,3 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
-

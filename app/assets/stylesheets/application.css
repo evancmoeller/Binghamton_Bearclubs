@@ -21,3 +21,11 @@ body {
 .bing-green {
 	color: #004d00;
 }
+
+.border-thick {
+    border-width: 5px !important;
+}
+
+.admin_only {
+	display: none
+}

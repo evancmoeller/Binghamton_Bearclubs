@@ -1,11 +1,33 @@
-%h2 Edit Club
+%h2.text-center Edit Club
 
-= form_tag club_path(@club), :method => :put do
-
-  = label :club, :name, 'Club Name'
-  = text_field :club, 'name', :id => 'name'
+= form_tag club_path(@club), :method => :put, :class => 'bg-light p-3 my-3 rounded-lg' do
+  .form-row
+    .form-group.col-md-6
+      = label :club, 'Name'
+      = text_field :club, :name, :type => 'text', :class => 'form-control', :id => 'name'
+    .form-group.col-md-6   
+      = label :club, 'Description'
+      = text_field :club, :description, :type => 'text', :class => 'form-control', :id => 'description'
+    .form-group.col-md-6
+      = label :club, 'Category'
+      = select :club, :category, Club.all_categories.keys, {}, :class => 'form-control', :id => 'category'
+    .form-group.col-md-6
+      = label :club, 'Subcategory'
+      = select :club, :subcategory, Club.all_categories, {}, :class => 'form-control', :id => 'subcategory'
+    .form-group.col-md-6
+      = label :club, 'URL'
+      = text_field :club, :url, :type => 'text', :class => 'form-control', :id => 'url'
+    .form-group.col-md-6
+      = label :club, 'Image'
+      = text_field :club, :image, :type => 'text', :class => 'form-control', :id => 'image'
+    .form-group.col-md-6
+      = label :club, :id, 'President'
+      = text_field :club, :president, :type => 'text', :class => 'form-control', :id => 'president'
+    .form-group.col-md-6
+      = label :club, :id, 'Vice President'
+      = text_field :club, :vice_president, :type => 'text', :class => 'form-control', :id => 'vice_president'
+  .col-md-12.text-center
+    = submit_tag 'Save Changes', :class => 'btn btn-secondary btn-lg rounded-pill mb-3', :id => 'save_changes'
     
-  = label :club, :description, 'Description'
-  = text_field :description, 'description', :id => 'description'
-
-  = submit_tag 'Update Club'
+.text-center
+  = link_to "Back", club_path(@club)

@@ -1,9 +1,27 @@
-%h1 #{@club.name}
-
-%h2 Description:
-
-%p#description=@club.description
-
-= link_to "Edit Club", edit_club_path(@club)
-= button_to "Delete Club", club_path(@club),  :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-primary'
-= link_to "Back to All Clubs", clubs_path
+.bg-light.px-5.py-3.mb-3.rounded-lg
+  .row
+    .col-md-12.text-center
+      = image_tag @club.image, alt: 'logo', class: 'rounded-circle border border-white border-thick'
+      %h2.text-center
+        = link_to @club.name, @club.url
+      %h6.text-muted.text-center E-Board | President: #{@club.president} | Vice President: #{@club.vice_president}
+  .row
+    .col-md-12.lead.px-5.py-2
+      %p#description=@club.description
+  .row.mt-2
+    .col-lg-6
+      %div{class: hide_join}
+        = button_to "Join", join_path, :method => :post, :class => 'btn btn-primary btn-block btn-lg rounded-pill', :id => 'join_club'
+      %div{class: hide_leave}
+        = button_to "Leave", join_path, :method => :post, :class => 'btn btn-primary btn-block btn-lg rounded-pill', :id => 'leave_club'
+    .col-lg-6
+      = button_to "View Events", club_events_path(@club), :method => :get, :class => 'btn btn-primary btn-block btn-lg rounded-pill', :id => 'view_events'  
+  %div{class: admin_only}
+    .row.mt-3
+      .col-lg-6
+        = button_to "Edit", edit_club_path(@club), :method => :get, :class => 'btn btn-warning btn-block btn-lg rounded-pill', :id => 'edit_club'
+      .col-lg-6
+        = button_to "Delete", club_path(@club), :method => :delete, :class => 'btn btn-warning btn-block btn-lg rounded-pill', :id => 'delete_club'
+  .row
+    .col-md-12.mt-4.text-center
+      = link_to "Back", clubs_path

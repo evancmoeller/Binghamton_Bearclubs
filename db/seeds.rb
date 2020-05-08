@@ -6,24 +6,41 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# CREATE TABLE IF NOT EXISTS "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-# INSERT INTO users VALUES(1,'Kevin Henneberger','khenneb1@binghamton.edu','2020-04-14 20:15:53.275330','2020-04-14 20:15:53.275330');
-
-# CREATE TABLE IF NOT EXISTS "authorizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "provider" varchar, "uid" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
-# INSERT INTO authorizations VALUES(1,'github','54592837',1,'2020-04-14 20:15:53.321437','2020-04-14 20:15:53.321437');
-
-=begin
-users = [
-  {:name => 'Baxter Bearcat', :email => 'bbearcat1@binghamton.edu'}
+clubs = [
+  {:name => 'HackBU', :description => 'HackBU exists to foster a community of individuals who solve problems through the innovative use of technology. We host weekly development workshops, organize trips to hackathons, and hold our own hackathon yearly.', :category => 'Academic', :subcategory => 'CS & Engineering', :url => 'https://club.hackbu.org/', :image => 'HackBU_logo.png', :president => 'Steven Foster', :vice_president => 'Carl Butler'},
+  {:name => 'ACM', :description => 'We are Binghamton University\'s student chapter of the Association for Computing Machinery, an international society for computer scientists. We hold programming competitions, problem solving workshops, and other fun events during the semester.', :category => 'Academic', :subcategory => 'CS & Engineering', :url => 'http://binghamtonacm.com/', :image => 'ACM_logo.png', :president => 'Heather Evans', :vice_president => 'Martin Sanders'},
+  {:name => 'Finance Society', :description => 'The Finance Society is a student group at Binghamton University with the purpose of helping our members learn about careers in finance, technical finance, and how to network. We teach these skills to our members to help them pursue careers in front office finance. Students gain these skills and get these opportunities through our competitions, weekly workshops, and guest speaker events.', :category => 'Academic', :subcategory => 'Economics & Business', :url => 'http://bingfinance.org/', :image => 'finance_society_logo.png', :president => 'Aaron White', :vice_president => 'Nancy Collins'},
+  {:name => 'African Student Organization', :description => 'To act as the official representative of the African Student body in matters effecting them at SUNY Binghamton wherever possible. Also, to improve the quality of life of African Students at SUNY Binghamton by arranging social activities and other cultural and educational events.', :category => 'Cultural', :subcategory => 'African American', :url => 'https://bengaged.binghamton.edu/aso/home/', :image => 'african_student_organization_logo.png', :president => 'Christine Jones', :vice_president => 'Todd Wilson'},
+  {:name => 'Ballroom Dance Association', :description => 'To inspire and promote Ballroom/Latin dancing among the student body and represent the University in inter-collegiate and amateur competitions.', :category => 'Recreational', :subcategory => 'Sports', :url => 'https://sites.google.com/view/bingballroom/home', :image => 'ballroom_dance_association_logo.png', :president => 'Christopher Phillips', :vice_president => 'Emma Adams'},
+  {:name => 'Outdoors Club', :description => 'The purpose of the Outdoors Club is to help students with common recreational interests to get together and spend time outside and also to expose members to new outdoor opportunities while teaching safety and responsibility for the environment.', :category => 'Recreational', :subcategory => 'Outdoors', :url => 'https://bengaged.binghamton.edu/outdoorsclubclub/home/', :image => 'outdoors_club_logo.png', :president => 'Mary Hughes', :vice_president => 'Thomas Lewis'},
+  {:name => 'Circle K', :description => 'Circle K International develops college and university students into a global network of responsible citizens and leaders with a lifelong commitment to service. Additionally, our mission is to be a global community-service organization on campus that aims to not only better the surrounding community outside and inside campus, but also create a strong sense of friendship that can be achieved while participating in any community service event. Circle K International wants to enrich the world one member, one child and one community at a time while fostering fellowship and inspiring many along the way to follow in the same path.', :category => 'Activism', :subcategory => 'Community Service & Philanthropy', :url => 'http://bingcirclek.weebly.com/', :image => 'circle_k_logo.png', :president => 'Ashley Wilson', :vice_president => 'Annie Simmons'},
+  {:name => 'College Democrats', :description => 'Work towards getting Democrats elected to public office. Educate college students on progressive issues. Engage youth in local and state politics.', :category => 'Activism', :subcategory => 'Politics', :url => 'https://bengaged.binghamton.edu/dems/home/', :image => 'college_democrats_logo.png', :president => 'Paul Wilson', :vice_president => 'Diane Hernandez'},
+  {:name => 'Binghamton Buddies', :description => 'Binghamton Buddies as a club is designed to connect Binghamton University students with BOCES students. BOCES consists of a set of alternative education programs for students K through 12 who have been removed from mainstream public schools for behavioral, social and academic issues.', :category => 'Activism', :subcategory => 'Community Service & Philanthropy', :url => 'https://bengaged.binghamton.edu/binghamtonbuddies/home/', :image => 'binghamton_buddies_logo.png', :president => 'Jennifer Baker', :vice_president => 'Sandra Watson'},
+  {:name => 'Asian Student Union', :description => 'Asian Student Union (ASU) is one of the largest cultural organizations in Binghamton University (SUNY). Representing roughly 20% of its Asian and Asian American undergraduate/graduate students, ASU along with our seven subgroups, serve to defy stereotypes, define culture, maintain a sense of tradition, and what it is to be Asian American in today’s world.', :category => 'Cultural', :subcategory => 'Asian', :url => 'https://bengaged.binghamton.edu/asu/home/', :image => 'asian_student_union_logo.png', :president => 'Margaret Powell', :vice_president => 'Paul Wright'}
 ]
-users.each do |user|
-  User.create!(user)
+
+events = [
+  {:name => 'GIM', :description => 'Come learn about HackBU and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-23 20:00:00.000000', :location => 'UU 118', :club_id => 1},
+  {:name => 'Weekly Workshop', :description => 'Come and learn the basics of Ruby on Rails!', :date_time =>'2020-02-07 21:00:00.000000', :location => 'UU 101', :club_id => 1},
+  {:name => 'Hackathon', :description => 'Our hackathon is a great time to build a cool project, learn new things, meet new people, and receive free food and swag. Everyone, regardless of background, is encouraged to attend!', :date_time =>'2020-03-01 09:00:00.000000', :location => 'ITC', :club_id => 1},
+  {:name => 'GIM', :description => 'Come learn about ACM and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-17 21:00:00.000000', :location => 'UU 162', :club_id => 2},
+  {:name => 'GIM', :description => 'Come learn about Finance Society and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-15 20:00:00.000000', :location => 'FA 102', :club_id => 3},
+  {:name => 'ER Case Competition Workshop', :description => 'DCF Valuation Workshop. This workshop will be essential for those participating in the Equity Research Competition and for those interested in front office finance careers.', :date_time =>'2020-02-3 20:00:00.000000', :location => 'AA 04', :club_id => 3},
+  {:name => 'ER Case Competition First Round', :description => 'Reminder that the first round of the Equity Research Competition will be held this week. ', :date_time =>'2020-02-8 20:00:00.000000', :location => 'AA 04', :club_id => 3},
+  {:name => 'GIM', :description => 'Come learn about African Student Organization and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-16 21:00:00.000000', :location => 'CW 112', :club_id => 4},
+  {:name => 'GIM', :description => 'Come learn about Ballroom Dance Association and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-14 20:00:00.000000', :location => 'LH 7', :club_id => 5},
+  {:name => 'GIM', :description => 'Come learn about Outdoors Club and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-19 20:00:00.000000', :location => 'UU 109', :club_id => 6},
+  {:name => 'Weekly Meeting', :description => 'Come learn about our downhill skiing trip!', :date_time =>'2020-02-4 20:00:00.000000', :location => 'S1 162', :club_id => 6},
+  {:name => 'GIM', :description => 'Come learn about Circle K and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-25 20:00:00.000000', :location => 'CW 215', :club_id => 7},
+  {:name => 'GIM', :description => 'Come learn about College Democrats and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-28 21:00:00.000000', :location => 'LH 3', :club_id => 8},
+  {:name => 'GIM', :description => 'Come learn about Binghamton Buddies and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-27 21:00:00.000000', :location => 'AA 02', :club_id => 9},
+  {:name => 'GIM', :description => 'Come learn about Asian Student Union and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-23 21:00:00.000000', :location => 'S1 149', :club_id => 10}
+]
+
+clubs.each do |club|
+  Club.create!(club)
 end
 
-authorizations = [
-  {:provider => 'github', :uid => '12345678', :user_id => 1}
-]
-authorizations.each do |authorization|
-  Authorization.create!(authorization)
+events.each do |event|
+  Event.create!(event)
 end
-=end

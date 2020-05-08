@@ -1,12 +1,38 @@
-%h2 All Clubs
+%h2.text-center.mb-3 Join a New Club Today!
 
-%table#clubs.table.table-striped.col-md-12
-  %thead
-    %th Club Name
-    
-  %tbody
-    - @clubs.each do |club|
-      %tr
-        %td= link_to "#{club.name}", club_path(club)
+%div{class: admin_only}
+  = button_to "Create New Club", new_club_path, :method => :get, :class => 'btn btn-warning btn-block btn-lg rounded-pill', :id => 'create_club'
+
+.row.mt-3
+  .col-md-6
+    = form_tag clubs_path, :method => :get do
+      .form-group
+        = text_field :club, :search, :value => @search, :type => 'text', :name => 'search', :class => 'form-control mb-2', :id => 'search'
+        = submit_tag 'Search', :class => 'btn btn-primary btn-block btn-lg rounded-pill form-control', :id => 'search_submit'
+  .col-md-6
+    = form_tag clubs_path, :method => :get do 
+      .form-group
+        = select :club, :sort, options_for_select(Club.sort_criteria, :selected => @sort), {}, :name => 'sort', :class => 'form-control mb-2', :id => 'sort_criteria'
+        = submit_tag 'Sort', :class => 'btn btn-primary btn-block btn-lg rounded-pill form-control', :id => 'sort_submit'
+= form_tag clubs_path, :method => :get, :class => "bg-light p-3 rounded-lg" do
+  - @all_categories.keys.each do |category|
+    .row.form-group.px-3
+      = label :club, category, class: "form-check-label font-weight-bold mr-2"
+      - @all_categories[category].each do |subcategory|
+        .form-check.form-check-inline
+          = check_box_tag "subcategories[#{subcategory}]", value = "1", checked = @subcategories_selected.include?(subcategory), class: "form-check-input", id: "subcategories_#{subcategory}"
+          = label :club, :id, subcategory, class: "form-check-label"
+  = submit_tag 'Filter', :class => 'btn btn-primary btn-block btn-lg rounded-pill form-control', :id => 'filter_submit'
+
+- if flash[:not_found]   
+  .alert.alert-danger.mt-3
+    #notice.message= flash[:not_found]   
         
-= link_to "Create a Club", new_club_path
+- @clubs.each do |club|
+  .row.bg-light.my-5.p-3.rounded-lg
+    .col-md-2
+      = image_tag club.image, alt: 'logo', class: 'rounded-circle border border-white border-thick'
+    .col-md-10
+      %h3= link_to "#{club.name}", club_path(club)
+      %small.text-muted= "#{club.category} | #{club.subcategory}"
+      %p= club.description

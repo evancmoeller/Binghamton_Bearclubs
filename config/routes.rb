@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   get '/login', :to => 'sessions#new', :as => :login
   get '/logout', :to => 'sessions#destroy', :as => :logout
   get '/cleanup/', :to => 'sessions#cleanup', :as => :cleanup
+  post '/clubs/:id/join', :to => 'clubs#join', :as => :join
   
   resources :users
-  resources :clubs 
+
+  resources :clubs do
+    resources :events
+  end
   
   get 'dashboard/index'
-  get 'welcome/signup'
-  get 'welcome/login', :as => :welcome_login
+  get 'welcome/login', :as => :welcome_login, :via => [:get, :post]
   root 'welcome#login'
   
   # The priority is based upon order of creation: first created -> highest priority.

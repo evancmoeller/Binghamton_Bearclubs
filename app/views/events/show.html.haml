@@ -1,0 +1,27 @@
+%h2.text-center #{@event.name}
+
+.bg-light.p-3.m-3.rounded-lg
+  %ul.list-group.list-group-flush
+    %li.list-group-item
+      %b Description:
+      =@event.description
+    %li.list-group-item
+      %b Location:   
+      =@event.location
+    %li.list-group-item
+      %b Date:      
+      =@event.date_time.strftime("%-m/%-d/%Y")
+    %li.list-group-item
+      %b Time:           
+      =@event.date_time.strftime("%l:%M %p")
+
+%div{class: admin_only}
+  .row.my-3
+    .col-lg-6
+      = button_to "Edit", edit_club_event_path(@club, @event), :method => :get, :class => 'btn btn-warning btn-block btn-lg rounded-pill', :id => 'edit_club_event'
+    .col-lg-6
+      = button_to "Delete", club_event_path(@club, @event), :method => :delete, :class => 'btn btn-warning btn-block btn-lg rounded-pill', :id => 'delete_club_event'
+    
+.row
+  .col-md-12.mt-3.text-center
+    = link_to "Back", club_events_path(@club)

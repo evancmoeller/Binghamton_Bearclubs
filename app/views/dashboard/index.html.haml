@@ -1,2 +1,30 @@
-%div
-  = link_to 'Search Page', clubs_path
+%ul.nav.nav-tabs
+  %li.nav-item
+    = link_to 'Dashboard', dashboard_index_path, class: "nav-link active"
+  %li.nav-item
+    = link_to 'Search Page', clubs_path, class: "nav-link"
+  %li.nav-item
+    = link_to 'Account Profile', user_path(@user), class: "nav-link"
+  %li.nav-item
+    = link_to 'Log Out', logout_path, class: "nav-link", id: "log_out"
+    
+%h2.text-center.my-3 Dashboard
+
+%div{class: hide_message}
+  %h4.text-center.my-5
+    It looks like you haven't joined any clubs yet.
+    = link_to 'Join one!', clubs_path
+
+- @clubs.each do |club_id|
+  - @club = Club.find(club_id)
+  .bg-light.my-3.p-3.rounded-lg 
+    .text-center
+      = image_tag @club.image, alt: 'logo', class: 'rounded-circle border border-white border-thick'
+    %h3.text-center= link_to "#{@club.name}", club_path(@club)
+  
+    - @events = Event.where("club_id = ?", club_id)
+    - @events.each do |event|
+      .bg-white.my-3.p-3.rounded-lg 
+        %h5= link_to "#{event.name}", club_event_path(@club, event)
+        %small.form-text.text-muted= "#{event.location} | #{event.date_time.strftime("%l:%M %p")} | #{event.date_time.strftime("%-m/%-d/%Y")}"
+        %p= event.description

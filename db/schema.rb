@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413232444) do
+ActiveRecord::Schema.define(version: 20200506124848) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -26,15 +26,38 @@ ActiveRecord::Schema.define(version: 20200413232444) do
   create_table "clubs", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "category"
+    t.string   "subcategory"
+    t.string   "url"
+    t.string   "image"
+    t.string   "president"
+    t.string   "vice_president"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "date_time"
+    t.string   "location"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "club_id"
   end
+
+  add_index "events", ["club_id"], name: "index_events_on_club_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "b_number"
+    t.string   "acct_type"
+    t.string   "major"
+    t.string   "grad_year"
+    t.string   "joined"
   end
 
 end

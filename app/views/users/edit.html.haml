@@ -1,0 +1,19 @@
+%h2.text-center Account Profile
+
+= form_tag user_path(@user), :method => :put, :class => 'bg-light p-3 my-3 rounded-lg' do
+  .form-row
+    .form-group.col-md-6
+      = label :user, :id, 'Account Type'
+      = select :user, :acct_type, ['Standard', 'Admin'], {}, :class => 'form-control', :id => 'acct_type'
+    .form-group.col-md-6
+      = label :user, :id, 'B-Number'
+      = text_field :user, 'b_number', :placeholder => 'Bxxxxxxxx', :type => 'text', :class => 'form-control', :id => 'b_number'
+  .form-row
+    .form-group.col-md-6
+      = label :user, :id, 'Major'
+      = select :user, :major, Club.all_categories['Academic'], {}, :class => 'form-control', :id => 'major'
+    .form-group.col-md-6
+      = label :user, :id, 'Graduation Year'
+      = text_field :user, 'grad_year', :type => 'number', :class => 'form-control', :id => 'grad_year'
+  .col-md-12.text-center.mt-3
+    = submit_tag 'Submit', :class => 'btn btn-secondary btn-lg rounded-pill', :id => 'submit_button'

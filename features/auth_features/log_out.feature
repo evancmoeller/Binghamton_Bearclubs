@@ -1,18 +1,28 @@
 Feature: log out
 
-Background: user have been added to database and logged in on the dashboard page
+Background:
+  
+  Given I am on the "Welcome Page"
+  And I follow "Session Reset"
   
   Given the following users exist:
-  | name           | email                    |
-  | Baxter Bearcat | bbearcat1@binghamton.edu |
+  | name           | email                   |
+  | Baxter Bearcat | bbearcat@binghamton.edu |
   
-  Then 1 seed users should exist
-  Given I am on the "Welcome Page"
-  # When I press "github"
-  # Then I am on the "Dashboard Page"
-  # And I should see "Welcome back Baxter Bearcat!"
-
+  Given the following authorizations exist:
+  | provider | uid      | user_id |
+  | github   | 12345678 | 1       | 
+  
+  Then 1 seed authorizations should exist
+  And 1 seed users should exist
+  
+  When I Sign Up or Log In with "GitHub"
+  Then I should be on the "Dashboard Page"
+  And I should see "Welcome back Baxter Bearcat!"
+  And I should see "Log Out"
+  
+@omniauth_test
 Scenario: log out
-  # When I press "Log out"
-  # Then I am on the "Welcome Page"
-  # And I should see "You were successfully logged out."
+  When I follow "log_out"
+  Then I should see "You successfully logged out of your account."
+  And I am on the "Welcome Page"

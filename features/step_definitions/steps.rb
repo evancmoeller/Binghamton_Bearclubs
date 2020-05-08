@@ -36,11 +36,25 @@ Given(/^I visit (.+)$/) do |page_name|
   visit path_to(page_name)
 end
 
-Then(/^I should see message "Welcome (back )?([^!]*)! You have (signed up|logged in) via ([^\.]*)."$/) do |back, name, sorl, provider|
-  step %Q{I should see "Welcome #{back}#{name}! You have #{sorl} via #{provider}."}
+Then(/I should see "(.*)" before "(.*)"/) do |e1, e2|
+  expect(/[\s\S]*#{e1}[\s\S]*#{e2}[\s\S]*/).to match(page.body) 
 end
 
-Then(/^I should see error message "([^"]*)"$/) do |message|
-  step %Q{I should see "#{message}"}
+When(/I (un)?check the following subcategories: (.*)/) do |uncheck, subcategories_list|
+  subcategories = subcategories_list.split(', ')
+  subcategories.each do |subcategory|
+    uncheck ? uncheck("subcategories[#{subcategory}]") : check("subcategories[#{subcategory}]")
+  end
 end
 
+When(/I (un)?check all subcategories/) do |uncheck|
+  subcategories = Club.all_categories.values.flatten
+  subcategories.each do |subcategory|
+    uncheck ? uncheck("subcategories[#{subcategory}]") : check("subcategories[#{subcategory}]")
+  end
+end
+
+Given(/^I have an admin account$/) do 
+  user = User.find(1)
+  user.acct_type == "Admin"
+end

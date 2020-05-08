@@ -15,23 +15,41 @@ module NavigationHelpers
       when (/^the "Welcome Page"$/)
         welcome_login_path
         
-      when (/^the "Sign Up Page"$/)
-        welcome_signup_path
-    
       when (/^the "Dashboard Page"$/) 
         dashboard_index_path
+      
+      when (/^the "User Show Page" for "(.*)"$/)
+        user_path(User.find_by_name($1))
         
+      when (/^the "User Edit Page" for "(.*)"$/)
+        edit_user_path(User.find_by_name($1))
+      
       when (/^the "Clubs Page"$/)
         clubs_path
         
       when (/the "Create New Club Page"$/)
         new_club_path
         
-      when (/^the "Show Page" for "(.*)"$/)
+      when (/^the "Club Show Page" for "(.*)"$/)
         club_path(Club.find_by_name($1))
         
-      when (/^the "Edit Page" for "(.*)"$/)
+      when (/^the "Club Edit Page" for "(.*)"$/)
         edit_club_path(Club.find_by_name($1))
+        
+      when(/^the "Events Page" for "(.*)"$/)
+        club_events_path(Club.find_by_name($1))
+        
+      when (/^the "Create New Event Page" for "(.*)"$/)
+        new_club_event_path(Club.find_by_name($1))
+        
+      when (/^the "Event Show Page" for "(.*)" in "(.*)"$/)
+        club_event_path(Club.find_by_name($2), Event.find_by_name($1))
+        
+      when (/^the "Event Edit Page" for "(.*)" in "(.*)"$/)
+        edit_club_event_path(Club.find_by_name($2), Event.find_by_name($1))
+
+      when (/^the "Failure Page"$/)
+        auth_failure_path
         
     else
       begin

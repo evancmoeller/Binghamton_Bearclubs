@@ -1,0 +1,17 @@
+%h2.text-center= "#{@club.name} Events"
+
+%div{class: admin_only}
+  = button_to "Create New Event", new_club_event_path, :method => :get, :class => 'btn btn-warning btn-block btn-lg rounded-pill my-3', :id => 'create_club_event'
+
+- @events.each do |event|
+  .row.bg-light.my-4.p-3
+    .row.col-lg-12
+      %h3= link_to "#{event.name}", club_event_path(@club, event)
+    .row.col-lg-12
+      %small.form-text.text-muted= "#{event.location} | #{event.date_time.strftime("%l:%M %p")} | #{event.date_time.strftime("%-m/%-d/%Y")}"
+    
+    .row.col-lg-12
+      %p= event.description
+      
+.text-center
+  = link_to "Back", club_path(@club)

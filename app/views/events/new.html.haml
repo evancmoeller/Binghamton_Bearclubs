@@ -1,0 +1,22 @@
+%h2.text-center Create Event
+
+= form_tag club_events_path(@club), :method => :post, :class => 'bg-light p-3 mt-3 rounded-lg' do
+  .form-row
+    .form-group.col-md-6
+      = label :event, :id, 'Name'
+      = text_field :event, 'name', :type => 'text', :class => 'form-control', :id => 'name'
+    .form-group.col-md-6   
+      = label :event, :id, 'Description'
+      = text_field :event, 'description', :type => 'text', :class => 'form-control', :id => 'description'
+    .form-group.col-md-6
+      = label :event, :id, 'Date & Time'
+      .div.form-control
+        = datetime_select :event, :date_time, {:ampm => true, :order => [:day, :month, :year], :start_year => 2020, :end_year => 2030}, :id => 'date_time'
+    .form-group.col-md-6
+      = label :event, :id, 'Location'
+      = text_field :event, :location, :type => 'text', :class => 'form-control', :id => 'location'
+  .col-md-12.text-center
+    = submit_tag 'Save Changes', :class => 'btn btn-secondary btn-lg rounded-pill', :id => 'save_changes'
+    
+.text-center.mt-3
+  = link_to "Back", club_events_path(@club)
