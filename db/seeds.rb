@@ -19,6 +19,7 @@ clubs = [
   {:name => 'Asian Student Union', :description => 'Asian Student Union (ASU) is one of the largest cultural organizations in Binghamton University (SUNY). Representing roughly 20% of its Asian and Asian American undergraduate/graduate students, ASU along with our seven subgroups, serve to defy stereotypes, define culture, maintain a sense of tradition, and what it is to be Asian American in today’s world.', :category => 'Cultural', :subcategory => 'Asian', :url => 'https://bengaged.binghamton.edu/asu/home/', :image => 'asian_student_union_logo.png', :president => 'Margaret Powell', :vice_president => 'Paul Wright'}
 ]
 
+=begin
 events = [
   {:name => 'GIM', :description => 'Come learn about HackBU and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-23 20:00:00.000000', :location => 'UU 118', :club_id => 1},
   {:name => 'Weekly Workshop', :description => 'Come and learn the basics of Ruby on Rails!', :date_time =>'2020-02-07 21:00:00.000000', :location => 'UU 101', :club_id => 1},
@@ -35,6 +36,25 @@ events = [
   {:name => 'GIM', :description => 'Come learn about College Democrats and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-28 21:00:00.000000', :location => 'LH 3', :club_id => 8},
   {:name => 'GIM', :description => 'Come learn about Binghamton Buddies and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-27 21:00:00.000000', :location => 'AA 02', :club_id => 9},
   {:name => 'GIM', :description => 'Come learn about Asian Student Union and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'2020-01-23 21:00:00.000000', :location => 'S1 149', :club_id => 10}
+]
+=end
+
+events = [
+  {:name => 'GIM', :description => 'Come learn about HackBU and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'8PM | 1/23/20', :location => 'UU 118', :club_id => 1},
+  {:name => 'Weekly Workshop', :description => 'Come and learn the basics of Ruby on Rails!', :date_time =>'8PM | 2/7/20', :location => 'UU 101', :club_id => 1},
+  {:name => 'Hackathon', :description => 'Our hackathon is a great time to build a cool project, learn new things, meet new people, and receive free food and swag. Everyone, regardless of background, is encouraged to attend!', :date_time =>'9AM | 3/1/20', :location => 'ITC', :club_id => 1},
+  {:name => 'GIM', :description => 'Come learn about ACM and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'9PM | 1/17/20', :location => 'UU 162', :club_id => 2},
+  {:name => 'GIM', :description => 'Come learn about Finance Society and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'9PM | 1/15/20', :location => 'FA 102', :club_id => 3},
+  {:name => 'ER Case Competition Workshop', :description => 'DCF Valuation Workshop. This workshop will be essential for those participating in the Equity Research Competition and for those interested in front office finance careers.', :date_time =>'8PM | 2/3/20', :location => 'AA 04', :club_id => 3},
+  {:name => 'ER Case Competition First Round', :description => 'Reminder that the first round of the Equity Research Competition will be held this week. ', :date_time =>'8PM | 2/8/20', :location => 'AA 04', :club_id => 3},
+  {:name => 'GIM', :description => 'Come learn about African Student Organization and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'9PM | 1/16/20', :location => 'CW 112', :club_id => 4},
+  {:name => 'GIM', :description => 'Come learn about Ballroom Dance Association and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'8PM | 1/15/20', :location => 'LH 7', :club_id => 5},
+  {:name => 'GIM', :description => 'Come learn about Outdoors Club and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'8PM | 1/19/20', :location => 'UU 109', :club_id => 6},
+  {:name => 'Weekly Meeting', :description => 'Come learn about our downhill skiing trip!', :date_time =>'8PM | 2/4/20', :location => 'S1 162', :club_id => 6},
+  {:name => 'GIM', :description => 'Come learn about Circle K and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'8PM | 1/25/20', :location => 'CW 215', :club_id => 7},
+  {:name => 'GIM', :description => 'Come learn about College Democrats and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'8PM | 1/28/20', :location => 'LH 3', :club_id => 8},
+  {:name => 'GIM', :description => 'Come learn about Binghamton Buddies and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'9PM | 1/27/20', :location => 'AA 02', :club_id => 9},
+  {:name => 'GIM', :description => 'Come learn about Asian Student Union and the various activities we will be doing during the semester. As promised, there will be pizza!', :date_time =>'9PM | 1/23/20', :location => 'S1 149', :club_id => 10}
 ]
 
 clubs.each do |club|

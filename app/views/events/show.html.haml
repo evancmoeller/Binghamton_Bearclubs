@@ -8,12 +8,15 @@
     %li.list-group-item
       %b Location:   
       =@event.location
+    -# %li.list-group-item
+      -# %b Date:      
+      -# =@event.date_time.strftime("%-m/%-d/%Y")
+    -# %li.list-group-item
+      -# %b Time:           
+      -# =@event.date_time.strftime("%l:%M %p")
     %li.list-group-item
-      %b Date:      
-      =@event.date_time.strftime("%-m/%-d/%Y")
-    %li.list-group-item
-      %b Time:           
-      =@event.date_time.strftime("%l:%M %p")
+      %b Date & Time:      
+      =@event.date_time
 
 %div{class: admin_only}
   .row.my-3

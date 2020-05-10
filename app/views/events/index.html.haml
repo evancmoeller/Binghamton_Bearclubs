@@ -8,7 +8,8 @@
     .row.col-lg-12
       %h3= link_to "#{event.name}", club_event_path(@club, event)
     .row.col-lg-12
-      %small.form-text.text-muted= "#{event.location} | #{event.date_time.strftime("%l:%M %p")} | #{event.date_time.strftime("%-m/%-d/%Y")}"
+      -# %small.form-text.text-muted= "#{event.location} | #{event.date_time.strftime("%l:%M %p")} | #{event.date_time.strftime("%-m/%-d/%Y")}"
+      %small.form-text.text-muted= "#{event.location} | #{event.date_time}"
     
     .row.col-lg-12
       %p= event.description

@@ -1,1 +1,0 @@
-ActiveRecord::ConnectionAdapters::PostgreSQLAdapter::NATIVE_DATABASE_TYPES[:datetime] = {name: "timestamp without time zone"}
